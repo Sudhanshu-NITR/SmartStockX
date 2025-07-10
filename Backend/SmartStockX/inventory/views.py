@@ -14,8 +14,9 @@ class RunSmartStockX(APIView):
     parser_classes = [MultiPartParser]
 
     def post(self, request):
-        inventory_file = request.FILES.get('inventory')
-        distance_file = request.FILES.get('distance')
+        print("Hi")
+        inventory_file = request.FILES.get('inventory_file')
+        distance_file = request.FILES.get('distance_file')
 
         if not inventory_file or not distance_file:
             return Response({"error": "Both inventory and distance files are required."},
@@ -56,6 +57,7 @@ class RunSmartStockX(APIView):
                     run_id=row["run_id"],
                     store_id=row["store_id"],
                     product_id=row["product_id"],
+                    product_name=row["product_name"],
                     stock=row["stock"],
                     expiry_date=row["expiry_date"],
                     shelf_life_days=row["shelf_life_days"],

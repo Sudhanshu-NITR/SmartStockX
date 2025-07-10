@@ -139,6 +139,7 @@ def suggest_transfers(inv_df: pd.DataFrame, dist_df: pd.DataFrame,
 
 def run_engine(inventory_path, distance_path):
     inv, dist = load_data(inventory_path, distance_path)
+    print(inv)
     inv = add_features(inv)
     _, inv = train_demand_model(inv)
     inv = apply_pricing(inv)

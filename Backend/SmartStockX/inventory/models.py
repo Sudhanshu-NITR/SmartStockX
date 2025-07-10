@@ -4,6 +4,7 @@ class Inventory(models.Model):
     run_id = models.CharField(max_length=50)
     store_id = models.CharField(max_length=20)
     product_id = models.CharField(max_length=20)
+    product_name = models.CharField(max_length=100, default="Unknown")
     stock = models.FloatField()
     expiry_date = models.DateField()
     shelf_life_days = models.IntegerField()
