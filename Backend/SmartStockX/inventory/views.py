@@ -14,7 +14,6 @@ class RunSmartStockX(APIView):
     parser_classes = [MultiPartParser]
 
     def post(self, request):
-        print("Hi")
         inventory_file = request.FILES.get('inventory_file')
         distance_file = request.FILES.get('distance_file')
 
