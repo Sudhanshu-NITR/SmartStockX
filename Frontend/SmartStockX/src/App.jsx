@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import InventoryPage from './pages/InventoryPage';
 import PredictionsPage from './pages/PredictionsPage';
 import TransferSuggestionsPage from './pages/TransferSuggestionsPage';
@@ -10,6 +10,14 @@ import Navbar from './components/Navbar';
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      pingBackend();
+    }, 1000 * 60 * 14);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const renderCurrentPage = () => {
     switch (currentPage) {

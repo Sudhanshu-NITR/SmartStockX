@@ -22,4 +22,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('inventory.urls')),
     path('', views.index, name='home'),
+    path('ping/', views.ping),
 ]
