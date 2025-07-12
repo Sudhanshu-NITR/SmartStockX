@@ -3,8 +3,8 @@ import { ArrowRightLeft, Home, Menu, Package, TrendingUp, Upload, X } from "luci
 const Navbar = ({ currentPage, setCurrentPage, isMobileMenuOpen, setIsMobileMenuOpen }) => {
   const navItems = [
     { id: 'home', label: 'Home', icon: Home },
-    { id: 'inventory', label: 'Inventory', icon: Package },
     { id: 'upload', label: 'Upload', icon: Upload },
+    { id: 'inventory', label: 'Inventory', icon: Package },
     { id: 'predictions', label: 'Predictions', icon: TrendingUp },
     { id: 'transfers', label: 'Transfers', icon: ArrowRightLeft }
   ];
@@ -16,7 +16,7 @@ const Navbar = ({ currentPage, setCurrentPage, isMobileMenuOpen, setIsMobileMenu
           <div className="flex items-center space-x-2 cursor-pointer" onClick={() => setCurrentPage("home")}>
             <Package className="h-8 w-8" />
             <span className="text-xl font-bold">SmartStockX</span>
-            <span className="text-sm bg-blue-700 px-2 py-1 rounded">Walmart Hackathon</span>
+            <span className="text-sm bg-blue-700 px-2 py-1 rounded">Walmart Sparkathon</span>
           </div>
 
           {/* Desktop Navigation */}

@@ -1,7 +1,93 @@
 import { useEffect, useState } from 'react';
 import { Loader, AlertCircle, RefreshCw, Search, ChevronDown, Package, TrendingUp, Calendar, DollarSign } from 'lucide-react';
-import api from '../services/api';
+// import api from '../services/api';
 
+// Mock API for demo
+const api = {
+    get: async (url) => {
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Return mock data
+        return [
+            {
+                id: 1,
+                product_name: "Organic Bananas",
+                store_id: "STORE001",
+                stock: 150,
+                shelf_life_days: 7,
+                expiry_date: "2025-07-20",
+                days_to_expiry: 7,
+                predicted_demand: 180,
+                final_price: 45,
+                MRP: 50,
+                discount: 0.1,
+                avg_daily_sales: 25,
+                expected_sales: 30
+            },
+            {
+                id: 2,
+                product_name: "Fresh Milk",
+                store_id: "STORE002",
+                stock: 200,
+                shelf_life_days: 3,
+                expiry_date: "2025-07-16",
+                days_to_expiry: 3,
+                predicted_demand: 320,
+                final_price: 60,
+                MRP: 65,
+                discount: 0.08,
+                avg_daily_sales: 45,
+                expected_sales: 50
+            },
+            {
+                id: 3,
+                product_name: "Whole Wheat Bread",
+                store_id: "STORE001",
+                stock: 80,
+                shelf_life_days: 5,
+                expiry_date: "2025-07-18",
+                days_to_expiry: 5,
+                predicted_demand: 95,
+                final_price: 35,
+                MRP: 40,
+                discount: 0.125,
+                avg_daily_sales: 18,
+                expected_sales: 20
+            },
+            {
+                id: 4,
+                product_name: "Greek Yogurt",
+                store_id: "STORE003",
+                stock: 120,
+                shelf_life_days: 14,
+                expiry_date: "2025-07-27",
+                days_to_expiry: 14,
+                predicted_demand: 275,
+                final_price: 85,
+                MRP: 90,
+                discount: 0.056,
+                avg_daily_sales: 35,
+                expected_sales: 40
+            },
+            {
+                id: 5,
+                product_name: "Chicken Breast",
+                store_id: "STORE002",
+                stock: 60,
+                shelf_life_days: 2,
+                expiry_date: "2025-07-15",
+                days_to_expiry: 2,
+                predicted_demand: 220,
+                final_price: 450,
+                MRP: 500,
+                discount: 0.1,
+                avg_daily_sales: 28,
+                expected_sales: 35
+            }
+        ];
+    }
+};
 
 // Stats Card Component
 const StatsCard = ({ title, value, icon: Icon, color = "blue" }) => {
@@ -42,7 +128,7 @@ const SearchAndFilter = ({
                 <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                 <input
                     type="text"
-                    placeholder="Search product or store ID..."
+                    placeholder="Search product name or store ID..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -75,8 +161,6 @@ const InventoryTable = ({ inventory, showMore, onShowMore, hasMore }) => {
         if (value > 100) return 'Medium';
         return 'Low';
     };
-    console.log(inventory);
-    
 
     const getDemandColor = (demand) => {
         switch (demand) {
@@ -225,12 +309,17 @@ const InventoryPage = () => {
         }
     };
 
+    // FIXED: Changed from product_id to product_name and made search more comprehensive
     const filteredInventory = inventory.filter(item => {
-        const matchesSearch =
-            item.product_id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            item.store_id.toLowerCase().includes(searchTerm.toLowerCase());
+        const searchLower = searchTerm.toLowerCase();
+        const matchesSearch = 
+            item.product_name.toLowerCase().includes(searchLower) ||
+            item.store_id.toLowerCase().includes(searchLower) ||
+            item.id.toString().includes(searchLower);
+        
         const matchesLocation =
             filterLocation === 'All' || item.store_id === filterLocation;
+        
         return matchesSearch && matchesLocation;
     });
 
@@ -324,6 +413,11 @@ const InventoryPage = () => {
             {/* Results Count */}
             <div className="mt-4 text-sm text-gray-600">
                 Showing {showMore ? filteredInventory.length : Math.min(20, filteredInventory.length)} of {filteredInventory.length} items
+                {searchTerm && (
+                    <span className="ml-2 text-blue-600">
+                        (filtered by "{searchTerm}")
+                    </span>
+                )}
             </div>
         </div>
     );
