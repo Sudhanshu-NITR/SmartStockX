@@ -25,13 +25,4 @@ const api = {
   },
 };
 
-export const pingBackend = async () => {
-  try {
-    const response = await axiosInstance.get('/ping/');
-    console.log("Ping successful:", response);
-  } catch (err) {
-    console.error("Ping failed:", err);
-  }
-};
-
 export default api;

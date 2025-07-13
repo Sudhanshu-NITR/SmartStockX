@@ -5,21 +5,11 @@ import TransferSuggestionsPage from './pages/TransferSuggestionsPage';
 import LandingPage from './pages/LandingPage';
 import UploadPage from './pages/UploadPage';
 import Navbar from './components/Navbar';
-import { pingBackend } from './services/api';
 
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      pingBackend();
-      console.log("Hi");
-    }, 1000 * 60 * 14);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const renderCurrentPage = () => {
     switch (currentPage) {
