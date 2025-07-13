@@ -14,7 +14,8 @@ const App = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       pingBackend();
-    }, 1000 * 60 * 14);
+      console.log("Hi");
+    }, 1000 * 60 * 5);
 
     return () => clearInterval(interval);
   }, []);
