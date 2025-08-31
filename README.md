@@ -7,8 +7,6 @@ Retail inventory management is a high-stakes balancing act. Overstocking leads t
 By using predictive analytics, SmartStockX transforms inventory management from a reactive process to a proactive strategy. It empowers retailers to make smarter, faster decisions, ensuring the right product is at the right place, at the right time, and at the right price. This closes critical gaps in manual forecasting and prevents losses due to preventable stock imbalances.
 
 ## How SmartStockX Solves The Problem?
-(Space for SmartStockX Dashboard Image)
-
 SmartStockX addresses this critical issue by:
 
 🧠 **Predicting Future Demand**: Utilizes a Random Forest machine learning model to forecast product demand based on historical sales, stock levels, and shelf life.
@@ -167,7 +165,3 @@ This project was developed as a team submission for the Walmart Sparkathon 2025.
 - Charishma Gowdu [Charishma-Gowdu](https://github.com/Charishma-Gowdu)
 - Sriya Akepati [hiSriya](https://github.com/hiSriya/)
 - Sudhanshu Kadam [Sudhanshu-NITR](https://github.com/Sudhanshu-NITR/)
-
-<!-- 
-## 📎 Disclaimer
-This repository is maintained as a personal project archive for interview and portfolio purposes. The original project was a team submission. -->
