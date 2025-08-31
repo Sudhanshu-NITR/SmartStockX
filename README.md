@@ -163,7 +163,7 @@ Your frontend will be live at http://localhost:5173.
 This project was developed as a team submission for the Walmart Sparkathon 2025. The project reflects our combined efforts across machine learning, backend, frontend, database design, and deployment.
 
 **Team Members:**
-- V N Santoshi Sambhumahanati [hiSriya](https://github.com/Santoshi-2k24/)
+- Santoshi Sambhumahanati [Santoshi-2k24](https://github.com/Santoshi-2k24/)
 - Charishma Gowdu [Charishma-Gowdu](https://github.com/Charishma-Gowdu)
 - Sriya Akepati [hiSriya](https://github.com/hiSriya/)
 - Sudhanshu Kadam [Sudhanshu-NITR](https://github.com/Sudhanshu-NITR/)
